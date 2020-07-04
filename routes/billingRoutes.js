@@ -6,12 +6,13 @@ module.exports = (app) => {
   app.post('/api/stripe', requireLogin, async (req, res) => {
     const charge = await stripe.charges.create({
       description: 'Software development services',
+      //For Indian users, providing shipping details is compulsary as per stripe, hence dummy data filled
       shipping: {
-        name: 'Jenny Rosen',
+        name: 'User',
         address: {
           line1: '510 Townsend St',
           postal_code: '98140',
-          city: 'San Francisco',
+          city: 'San Fransisco',
           state: 'CA',
           country: 'US',
         },
